@@ -8,6 +8,6 @@ public interface ServiciosAcademicos {
 
     public void matricularEstudiante(Estudiante estudiante);
     public void agregarCurso(Curso curso);
-    public void insciribirEstudianteCurso(Estudiante estudiante, int idCurso) throws CourseNotFoundException, Exception;
+    public void insciribirEstudianteCurso(Estudiante estudiante, int idCurso) throws Exception;
     public void desinsciribirEstudianteCurso(Estudiante estudiante, int idCurso) throws Exception;
 }
