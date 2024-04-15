@@ -6,9 +6,7 @@ import org.example.Exceptions.StudentNotFoundException;
 import org.example.model.Curso;
 import org.example.model.Estudiante;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GestorAcademico implements ServiciosAcademicos{
 
@@ -46,6 +44,12 @@ public class GestorAcademico implements ServiciosAcademicos{
         this.asignacionesCursos = asignacionesCursos;
     }
 
+    public GestorAcademico(){
+        this.estudiantes = new ArrayList<Estudiante>();
+        this.cursos = new ArrayList<Curso>();
+        this.asignacionesCursos = new HashMap<Estudiante,Curso>();
+    }
+
     @Override
     public void matricularEstudiante(Estudiante estudiante) {
         this.estudiantes.add(estudiante);
@@ -57,7 +61,7 @@ public class GestorAcademico implements ServiciosAcademicos{
     }
 
     @Override
-    public void insciribirEstudianteCurso(Estudiante estudiante, int idCurso) throws Exception{
+    public void insciribirEstudianteCurso(Estudiante estudiante, int idCurso) throws StudentNotFoundException, CourseNotFoundException{
 
         Curso curso = getCursoById(idCurso, this.cursos);
 
@@ -68,12 +72,20 @@ public class GestorAcademico implements ServiciosAcademicos{
 
 
     @Override
-    public void desinsciribirEstudianteCurso(Estudiante estudiante, int idCurso) throws Exception {
+    public void desinsciribirEstudianteCurso(Estudiante estudiante, int idCurso) throws StudentNotFoundException, CourseNotFoundException {
 
         Curso curso = getCursoById(idCurso, this.cursos);
 
         validateEstudianteIsMatriculado(estudiante, estudiantes);
 
         this.asignacionesCursos.remove(estudiante);
+    }
+
+    public List getCursos() {
+        return cursos;
+    }
+
+    public List getEstudiantes() {
+        return estudiantes;
     }
 }
