@@ -1,12 +1,12 @@
 package org.example.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Persona {
     private String nombre;
     private String apellido;
-    private Date fechaDeNacimiento;
-    public Persona(String nombre, String apellido, Date fechaDeNacimiento){
+    private LocalDate fechaDeNacimiento;
+    public Persona(String nombre, String apellido, LocalDate fechaDeNacimiento){
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -27,11 +27,11 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public Date getFechaDeNacimiento() {
+    public LocalDate getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
-    public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 }
